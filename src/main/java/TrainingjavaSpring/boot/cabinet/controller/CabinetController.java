@@ -25,4 +25,13 @@ public class CabinetController {
         log.info(" === Finish api create new cabinet, Cabinet Id : {} ===", response.getId());
         return response;
     }
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CabinetResponse getById(@PathVariable ("id") String id){
+        log.info(" === Start api getById cabinet === ");
+        log.info(" === String id :{} === ", id);
+        CabinetResponse response = service.getById(id);
+        log.info(" === Finish api getById cabinet, Cabinet Id : {} === ",response.getId());
+        return response;
+    }
 }
