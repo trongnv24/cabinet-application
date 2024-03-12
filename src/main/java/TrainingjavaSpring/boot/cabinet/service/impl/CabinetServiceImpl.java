@@ -3,6 +3,7 @@ package TrainingjavaSpring.boot.cabinet.service.impl;
 import TrainingjavaSpring.boot.cabinet.dto.request.CabinetRequest;
 import TrainingjavaSpring.boot.cabinet.dto.response.CabinetResponse;
 import TrainingjavaSpring.boot.cabinet.entity.CabinetEntity;
+import TrainingjavaSpring.boot.cabinet.exception.NotFoundException;
 import TrainingjavaSpring.boot.cabinet.repository.CabinetRepository;
 import TrainingjavaSpring.boot.cabinet.service.CabinetService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class CabinetServiceImpl implements CabinetService {
         log.info(" === String id : {} === ", id);
         Optional<CabinetEntity> optionalCabinet = cabinetRepository.findById(id);
         if ( !optionalCabinet.isPresent()){
-            throw new RuntimeException();
+            throw new NotFoundException(" không tìm thấy", id, null);
         }
         CabinetEntity entity = optionalCabinet.get();
         entity = cabinetRepository.save(entity);
