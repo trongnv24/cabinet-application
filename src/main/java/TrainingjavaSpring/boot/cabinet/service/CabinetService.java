@@ -7,4 +7,6 @@ public interface CabinetService {
     CabinetResponse create(CabinetRequest request);
 
     CabinetResponse getById(String id);
+
+    CabinetResponse update(CabinetRequest request, String id);
 }

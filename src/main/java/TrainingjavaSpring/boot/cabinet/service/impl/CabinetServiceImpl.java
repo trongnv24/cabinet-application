@@ -46,4 +46,21 @@ public class CabinetServiceImpl implements CabinetService {
         log.info(" === Finish api getById cabinet, Cabinet Id : {} ", response.getId());
         return response;
     }
+    @Override
+    public CabinetResponse update(CabinetRequest request, String id){
+        log.info(" === Start api update cabinet === ");
+        log.info(" === Request Body : {}, String id : {} ", request, id);
+        Optional<CabinetEntity>optionalCabinet = cabinetRepository.findById(id);
+        if (!optionalCabinet.isPresent()){
+            throw  new RuntimeException();
+        }
+        CabinetEntity entity = optionalCabinet.get();
+        entity.setName(request.getName());
+        entity.setQuantity(request.getQuantity());
+        entity.setPrice(request.getPrice());
+        entity = cabinetRepository.save(entity);
+        CabinetResponse response = convertEntityToCabinetResponse(entity);
+        log.info(" === Finish api update cabinet, Cabinet id {} : ", response.getId());
+        return response;
+    }
 }
