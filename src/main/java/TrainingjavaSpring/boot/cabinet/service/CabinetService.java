@@ -9,4 +9,6 @@ public interface CabinetService {
     CabinetResponse getById(String id);
 
     CabinetResponse update(CabinetRequest request, String id);
+
+    void  deleteById ( String id);
 }

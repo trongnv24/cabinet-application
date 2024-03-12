@@ -63,4 +63,16 @@ public class CabinetServiceImpl implements CabinetService {
         log.info(" === Finish api update cabinet, Cabinet id {} : ", response.getId());
         return response;
     }
+
+    @Override
+    public void deleteById(String id) {
+        log.info(" === Start api delete cabinet === ");
+        log.info(" === String id : {} === ", id);
+        Optional<CabinetEntity> optionalCabinet = cabinetRepository.findById(id);
+        if (!optionalCabinet.isPresent()){
+            throw new RuntimeException();
+        }
+        log.info(" === Finish api delete cabinet, Cabinet Id : {} === ");
+        cabinetRepository.deleteById(id);
+    }
 }
