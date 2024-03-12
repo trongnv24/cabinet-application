@@ -5,4 +5,6 @@ import TrainingjavaSpring.boot.cabinet.dto.response.CabinetResponse;
 
 public interface CabinetService {
     CabinetResponse create(CabinetRequest request);
+
+    CabinetResponse getById(String id);
 }
